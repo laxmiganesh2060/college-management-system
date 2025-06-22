@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exam Form - Model Campus</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f2f9ff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #002855;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .form-container {
+            background-color: white;
+            width: 90%;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #002855;
+            margin-bottom: 20px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #002855;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0055aa;
+        }
+
+        .note {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .back-link a {
+            color: #002855;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Exam Form Submission</h1>
+    </header>
+
+    <div class="form-container">
+        <h2>Fill Your Exam Details</h2>
+        <form action="#" method="post">
+            <input type="text" name="fullname" placeholder="Full Name" required>
+            <input type="text" name="symbol_no" placeholder="Symbol Number" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+
+            <select name="faculty" required>
+                <option value="">Select Faculty</option>
+                <option value="BSc CSIT">BSc CSIT</option>
+                <option value="BCA">BCA</option>
+                <option value="BBS">BBS</option>
+            </select>
+
+            <select name="semester" required>
+                <option value="">Select Semester</option>
+                <option value="1st">1st Semester</option>
+                <option value="2nd">2nd Semester</option>
+                <option value="3rd">3rd Semester</option>
+                <option value="4th">4th Semester</option>
+            </select>
+
+            <input type="number" name="amount" placeholder="Amount (e.g. 2500 NPR)" required>
+
+            <button type="submit">Submit Exam Form</button>
+        </form>
+
+        <div class="note">
+            * After submitting the form, contact the account department for payment confirmation.<br>
+            * You may also pay online through the college portal.
+        </div>
+
+        <div class="back-link">
+            <p><a href="student.html">← Back to Student Portal</a></p>
+        </div>
+    </div>
+
+</body>
+
+</html>

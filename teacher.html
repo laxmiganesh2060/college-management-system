@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Portal - Model Campus</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f9ff;
+        }
+
+        header {
+            background-color: #002855;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #004080;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #002855;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            margin: 8px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #002855;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #0055aa;
+        }
+
+        input[type="file"] {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Teacher Portal - Model Campus</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="teacher-portal.html">Dashboard</a>
+        <a href="teacher-dashboard.html">Upload PDF</a>
+        <a href="result.html">Results</a>
+        <a href="login.html">Logout</a>
+    </nav>
+
+    <div class="content">
+        <div class="card">
+            <h2>👨‍🏫 Teacher Profile</h2>
+            <p><strong>Name:</strong> Sita Kumari</p>
+            <p><strong>Department:</strong> Computer Science</p>
+            <p><strong>Subject:</strong> Data Structures</p>
+        </div>
+
+        <div class="card">
+            <h2>🗓️ Mark Attendance</h2>
+            <p>Choose class:</p>
+            <select>
+                <option>BSc CSIT 1st Year</option>
+                <option>BSc CSIT 2nd Year</option>
+            </select>
+            <br><br>
+            <a href="#" class="btn">Open Attendance Sheet</a>
+        </div>
+
+        <div class="card">
+            <h2>📂 Upload Study Materials (PDF)</h2>
+            <form action="#" method="post" enctype="multipart/form-data">
+                <input type="file" name="pdf" accept=".pdf" required>
+                <br><br>
+                <button class="btn" type="submit">Upload</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>📄 Assigned Subjects</h2>
+            <ul>
+                <li>Data Structures - BSc CSIT 2nd Year</li>
+                <li>Discrete Mathematics - BSc CSIT 1st Year</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>🎓 Student List</h2>
+            <a href="assets/pdf/student-list.pdf" class="btn" download>Download Student List</a>
+        </div>
+    </div>
+</body>
+
+</html>

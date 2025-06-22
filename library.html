@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Library - Model Campus</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f9ff;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #003366;
+            text-align: center;
+        }
+
+        .resource-list {
+            margin-top: 20px;
+        }
+
+        .resource-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f1f6ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .resource-item span {
+            font-weight: 500;
+        }
+
+        .resource-item a {
+            background-color: #003366;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .resource-item a:hover {
+            background-color: #0055aa;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Digital Library - Model Campus</h1>
+    </header>
+
+    <div class="container">
+        <h2>Available Study Materials</h2>
+
+        <div class="resource-list">
+            <div class="resource-item">
+                <span>Data Structures - Notes</span>
+                <a href="assets/pdf/datastructures.pdf" download>Download</a>
+            </div>
+            <div class="resource-item">
+                <span>Computer Networks - Book</span>
+                <a href="assets/pdf/computer-networks.pdf" download>Download</a>
+            </div>
+            <div class="resource-item">
+                <span>Discrete Mathematics - Notes</span>
+                <a href="assets/pdf/discrete-math.pdf" download>Download</a>
+            </div>
+            <div class="resource-item">
+                <span>Operating Systems - Slides</span>
+                <a href="assets/pdf/os-slides.pdf" download>Download</a>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <p><a href="index.html">← Back to Home</a></p>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Model Campus</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef6ff;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #004b8d;
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            color: #003366;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #003366;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .card a:hover {
+            background-color: #0055aa;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #888;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Dashboard - Model Campus</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="student-portal.html">Student</a>
+        <a href="teacher-portal.html">Teacher</a>
+        <a href="admin-login.html">Admin</a>
+        <a href="login.html">Logout</a>
+    </nav>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <h3>📅 Attendance</h3>
+                <p>Check and update your attendance records.</p>
+                <a href="student-portal.html">View</a>
+            </div>
+            <div class="card">
+                <h3>📝 Exam Form</h3>
+                <p>Fill out and pay for upcoming exams.</p>
+                <a href="payment.html">Register</a>
+            </div>
+            <div class="card">
+                <h3>📊 Results</h3>
+                <p>View your past exam performance.</p>
+                <a href="result.html">Results</a>
+            </div>
+            <div class="card">
+                <h3>📚 Library</h3>
+                <p>Browse digital study materials and books.</p>
+                <a href="library.html">Open Library</a>
+            </div>
+            <div class="card">
+                <h3>📄 Notes & PDF</h3>
+                <p>Teachers can upload and students can download PDFs.</p>
+                <a href="teacher-dashboard.html">Go to PDFs</a>
+            </div>
+            <div class="card">
+                <h3>ℹ️ About Campus</h3>
+                <p>Learn more about Model Campus vision and team.</p>
+                <a href="about.html">About Us</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Model Campus, Damak | Developed for College Use
+    </footer>
+
+</body>
+
+</html>

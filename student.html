@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Student Portal - Model Campus</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #0055aa;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #003366;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 8px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #003366;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #0055aa;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Student Portal</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="student-portal.html">Dashboard</a>
+        <a href="payment.html">Exam Form</a>
+        <a href="result.html">Results</a>
+        <a href="library.html">Library</a>
+        <a href="login.html">Logout</a>
+    </nav>
+
+    <div class="content">
+        <div class="card">
+            <h2>👤 Student Profile</h2>
+            <p><strong>Name:</strong> Ram Bahadur</p>
+            <p><strong>Class:</strong> BSc CSIT 2nd Year</p>
+            <p><strong>Symbol No:</strong> 123456</p>
+        </div>
+
+        <div class="card">
+            <h2>📅 Attendance</h2>
+            <ul>
+                <li>Computer Networks: 85%</li>
+                <li>Data Structures: 90%</li>
+                <li>Mathematics II: 92%</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>📝 Register for Exam</h2>
+            <p>To register for upcoming exams, <a class="btn" href="payment.html">Fill Exam Form</a></p>
+        </div>
+
+        <div class="card">
+            <h2>📄 Study Materials</h2>
+            <ul>
+                <li><a href="assets/pdf/networking-notes.pdf" download>Networking Notes</a></li>
+                <li><a href="assets/pdf/datastructures.pdf" download>Data Structures Notes</a></li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>📊 Exam Results</h2>
+            <p>View your last semester results <a class="btn" href="result.html">here</a>.</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Model Campus Damak</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Model Campus Damak</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="student.html">Student</a>
+            <a href="teacher.html">Teacher</a>
+            <a href="admin.html">Admin</a>
+            <a href="library.html">Library</a>
+            <a href="exam.html">Exam Form</a>
+            <a href="dashboard.html">PDF Dashboard</a>
+            <a href="result.html">Results</a>
+            <a href="more.html">More</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <img src="IMG_2323.JPG" alt="Model Campus Damak" class="campus-image">
+
+    <section class="hero">
+        <h1>Welcome to Model Campus Damak</h1>
+        <p>Empowering Students for a Brighter Future</p>
+        <!-- <a href="login.html" class="btn">Enter Portal</a> -->
+    </section>
+    <section>
+        <div class="container">
+            <h1>About Us</h1>
+            <div class="section">
+                <h2>🏫 Who We Are</h2>
+                <p>
+                    Model Campus Damak (MCD), established in the year 2060 B.S., is the first private undergraduate
+                    college in Damak and Western Jhapa, to offer education in diverse disciplines like Management,
+                    Humanities, Education and Science. Since its establishment, MCD has been offering quality education
+                    to cater the needs and interest of Nepalese students, at the university level, allowing them to
+                    specialize in any of the subjects of their interest – Accountancy, Finance, Marketing, Mathematics,
+                    English, Nepali, Rural Development, Sociology & Anthropology, Population Studies, Health & Physical
+                    Education, Literature, Journalism & Mass Communication, Poetry and so on. MCD has two sister
+                    concerns viz. Damak Model Higher Secondary School (DMHSS) and Motherland English Boarding School
+                    (MEBS).
+
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>🎯 Our Mission</h2>
+                <p>
+                    Our Mission
+                    MCD DMHSS envisions to impart "Right Education" which is the blend of 3Cs – Competency, Culture and
+                    Compassion, intended towards development of academic, civilized and responsible citizens who would
+                    contribute towards prosperous society and better world.
+
+                    Our Vision
+                    MCD & DMHSS strives to impart "Right Education" to suit the needs and interest of the students, in
+                    this digital age, at undergraduate and higher secondary level (10+2), by focusing in disciplines
+                    like Management, Science, Humanities and Education
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>🔭 Our Vision</h2>
+                <p>
+                    To be a leading academic institution in Nepal that shapes responsible, skilled, and forward-thinking
+                    professionals.
+                </p>
+            </div>
+
+            <div class="section message">
+
+                <body
+                    style="font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f4f9ff; margin: 0; padding: 0;">
+
+                    <div
+                        style="max-width: 900px; margin: 40px auto; background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                        <h2 style="color: #003366; text-align: center; margin-bottom: 20px;">Message from the Principal
+                        </h2>
+
+                        <div>
+                            <img src="principal.jpg" alt="" width="300">
+                            <p style="color: black;">Dear Students and Parents,
+
+                                I feel honored to have this opportunity to communicate my plan as the Principal of MCD &
+                                DMHSS. Having served the education sector for more than three decades, I have come to
+                                learn that holistic education is imperative for integrity and development of
+                                individuals. Our education system should ensure physical, psychological and intellectual
+                                development of individuals to ensure desired quality in education. Quality in education
+                                can be achieved only through proper planning and implementation of appropriate education
+                                philosophy, guided by modern management practices. Such modern management practices will
+                                be helpful to address the interest of all the stakeholders – students, parents,
+                                faculties and society at large, and to ensure stronger team work. In this regard, MCD &
+                                DMHSS has initiated practices like Counseling Services, Coordination Mechanism,
+                                Evaluation Mechanism, and Corporate Social Responsibility to accomplish our academic
+                                mission.
+
+                                Our Counseling Services, operated by the counselor, will be useful for students to
+                                overcome their problems - academic and personal, and will also be helpful to plan their
+                                future as per their needs and interest. This service is important to inspire and
+                                motivate students towards implementation of their academic and career plan. Similarly,
+                                our Coordination Mechanism is helpful to minimize centralized administrative
+                                complexities, through decentralization of authority to program coordinators, for
+                                efficient and effective mobilization of faculties and sound operation of academic
+                                session. Likewise, our Evaluation Mechanism promotes better performance of students and
+                                faculties by measuring their performance, finding out deviation and suggesting
+                                corrective actions, if required. Lastly, our Corporate Social Responsibility (CSR)
+                                intends to meet the social expectation of the society through scholarship program. Under
+                                this program scholarships are awarded to deserving students based on merits, economic
+                                status and performance.
+
+                                I believe that the integration of our qualified and dedicated faculties, conducive
+                                environment and modern management practices adopted by MCD & DMHSS will yield the
+                                education that you desire for and deserve. So, I, hereby, would like to invite you all
+                                to participate in our academic mission and take full benefit from it. <br> <br>
+
+                                Best Regards,<br>
+                                — Principal, MCD & DMHSS
+                            </p>
+
+
+                            <button onclick="toggleMessage()"
+                                style="background-color: #003366; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; font-weight: bold;">Read
+                                More</button>
+
+                            <div style="margin-top: 25px; font-weight: bold; text-align: right; color: #003366;">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        function toggleMessage() {
+                            const more = document.getElementById("more");
+                            const btn = event.target;
+                            if (more.style.display === "none") {
+                                more.style.display = "block";
+                                btn.textContent = "Read Less";
+                            } else {
+                                more.style.display = "none";
+                                btn.textContent = "Read More";
+                            }
+                        }
+                    </script>
+            </div>
+
+            <div class="section contact">
+                <h2>📍 Contact Us</h2>
+                <p><strong>Address:</strong> Damak-6, Jhapa, Nepal</p>
+                <p><strong>Email:</strong> info@modelcampus.edu.np</p>
+                <p><strong>Phone:</strong> +977-23-123456</p>
+            </div>
+
+            <div class="back-link">
+                <p><a href="index.html">← Back to Home</a></p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer style="color: #f4f9ff;">
+        &copy; 2025 Model Campus Damak | All rights reserved.
+    </footer>
+</body>
+
+</html>
