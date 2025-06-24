@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Model Campus - Programs and Downloads</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 450px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 30px;
+        }
+
+        .box h2 {
+            font-size: 28px;
+            color: #1a73e8;
+            border-bottom: 3px solid #1a73e8;
+            margin-bottom: 25px;
+        }
+
+        .content {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .content img {
+            width: 120px;
+            margin-right: 20px;
+        }
+
+        .content h3 {
+            font-size: 26px;
+            color: #2e7d32;
+            line-height: 1.2;
+        }
+
+        .content h3 span {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .links {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .links li {
+            margin: 12px 0;
+            font-size: 18px;
+        }
+
+        .links li::before {
+            content: "➤ ";
+            color: #1a73e8;
+        }
+
+        .links a {
+            color: #0b5394;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+            color: #0d47a1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Our Programs Section -->
+        <div class="box">
+            <h2>Our Programs</h2>
+            <div class="content">
+                <img src="https://i.imgur.com/YL4LMxU.png" alt="Programs Image">
+                <h3>Our <br><span>PROGRAMS</span></h3>
+            </div>
+            <ul class="links">
+                <li><a href="#">Science</a></li>
+                <li><a href="#">Management</a></li>
+                <li><a href="#">Humanities</a></li>
+                <li><a href="#">Education</a></li>
+            </ul>
+        </div>
+
+        <!-- Latest Downloads Section -->
+        <div class="box">
+            <h2>Latest Downloads</h2>
+            <div class="content">
+                <img src="https://i.imgur.com/DjcwJkP.png" alt="Downloads Image">
+                <h3>Latest <br><span>DOWNLOADS</span></h3>
+            </div>
+            <ul class="links">
+                <li><a href="#">Entrance Form</a></li>
+                <li><a href="#">Model Campus Prospectus</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>
