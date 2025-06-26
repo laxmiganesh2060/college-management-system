@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>student dashboard</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+  />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color:  #f4f9ff;;
+    }
+
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      position: fixed;
+      background-color: #343a40;
+      color: white;
+      padding-top: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar.collapsed {
+      width: 0;
+      overflow: hidden;
+    }
+
+    .sidebar h5 {
+      padding-left: 20px;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+
+    .sidebar a {
+      color: white;
+      display: block;
+      padding: 10px 20px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .sidebar a:hover {
+      background-color: #495057;
+    }
+
+    .main {
+      margin-left: 250px;
+      padding: 20px;
+      transition: margin-left 0.3s ease;
+    }
+
+    .main.collapsed {
+      margin-left: 0;
+    }
+
+    .navbar {
+      background-color: #0d6efd;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h4 {
+      margin: 0;
+      color: white;
+    }
+
+    .profile-dropdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .profile-dropdown img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      margin-left: 10px;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background: white;
+      border: 1px solid #ccc;
+      display: none;
+      min-width: 150px;
+      z-index: 1000;
+    }
+
+    .dropdown-menu a {
+      padding: 10px;
+      display: block;
+      color: black;
+      text-decoration: none;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .profile-dropdown.open .dropdown-menu {
+      display: block;
+    }
+
+    .student-name {
+      color: white;
+      font-weight: bold;
+    }
+
+    /* Profile & Schedule & Attendance Card */
+    .profile-card {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .profile-image img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid #003366;
+    }
+
+    .profile-info h2 {
+      margin: 0 0 10px;
+      color: #003366;
+      font-size: 24px;
+    }
+
+    .profile-info p {
+      margin: 8px 0;
+      color: #444;
+      font-size: 16px;
+    }
+
+    .edit-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #003366;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .edit-btn:hover {
+      background-color: #0059b3;
+    }
+
+    /* Style for schedule & attendance lists */
+    .profile-card ul {
+      text-align: left;
+      margin-top: 20px;
+      font-size: 16px;
+      color: #444;
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div>
+      <button class="btn btn-light" id="toggleSidebar">
+        <i class="bi bi-list"></i>
+      </button>
+      <h4 class="d-inline-block ms-2">🎓 Student Dashboard</h4>
+    </div>
+
+    <!-- Right side with name + image -->
+    <div class="profile-dropdown" id="profileDropdown">
+      <span class="student-name">Bishika Chaudhary</span>
+      <img src="img1.jpg" alt="User Profile" />
+      <div class="dropdown-menu">
+        <a href="#">Change Password</a>
+        <a href="index.html">Logout</a>
+        <a href="#">View Profile</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <h5>MAIN NAVIGATION</h5>
+    <a href="#" onclick="showSection('dashboardContent')">Dashboard</a>
+    <a href="#" onclick="showSection('attendanceSection')">Attendance</a>
+    <a href="#" onclick="showSection('scheduleSection')">Class Schedule</a>
+    <a href="#" onclick="showSection('profileSection')">My Profile</a>
+  </div>
+  <div class="main" id="main">
+    <!-- Dashboard Section -->
+    <div id="dashboardContent" class="content-section">
+      <h2>Dashboard</h2>
+      <p>Welcome to your student dashboard. Here is an overview of your activities.</p>
+    </div>
+
+    <!-- Attendance Section -->
+    <div id="attendanceSection" style="display:none;">
+      <div class="profile-card">
+        <h2>Attendance</h2>
+        <ul>
+          <li>Math: 90%</li>
+          <li>Science: 85%</li>
+          <li>English: 92%</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Class Schedule Section -->
+    <div id="scheduleSection" style="display:none;">
+      <div class="profile-card">
+        <h2>Class Schedule</h2>
+        <ul>
+          <li>Monday - Math (9:00 AM)</li>
+          <li>Tuesday - Science (10:00 AM)</li>
+          <li>Wednesday - English (11:00 AM)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Profile Section -->
+    <div id="profileSection" style="display: none;">
+      <div class="profile-card">
+        <div class="profile-image">
+          <img src="img1.jpg" alt="Student Photo" />
+        </div>
+        <div class="profile-info">
+          <h2>Bishika Chaudhary</h2>
+          <p><strong>Department:</strong> Humanities</p>
+          <p><strong>Level:</strong> Bachelors</p>
+          <p><strong>Date of Birth:</strong> 2003-05-10</p>
+          <p><strong>Email:</strong> bishika@example.com</p>
+          <button class="edit-btn">Edit Profile</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sidebar Toggle
+    document.getElementById("toggleSidebar").addEventListener("click", function () {
+      document.getElementById("sidebar").classList.toggle("collapsed");
+      document.getElementById("main").classList.toggle("collapsed");
+    });
+
+    // Profile Dropdown Toggle
+    const profile = document.getElementById("profileDropdown");
+    profile.addEventListener("click", function () {
+      profile.classList.toggle("open");
+    });
+
+    // Section Display Handler
+    function showSection(sectionId) {
+      // Hide all sections
+      const sections = ["dashboardContent", "attendanceSection", "scheduleSection", "profileSection"];
+      sections.forEach((id) => {
+        document.getElementById(id).style.display = "none";
+      });
+
+      // Show selected section
+      document.getElementById(sectionId).style.display = "block";
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
