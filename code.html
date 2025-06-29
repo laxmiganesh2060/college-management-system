@@ -1,82 +1,31 @@
-<div style="width: 100%; background-color: #e6f2ff; padding: 30px; box-sizing: border-box; border-radius: 15px;">
+<h2>Gallery</h2>
 
-    <div class="section message" style="background-color: #f9f0ff; padding: 20px; border-radius: 10px;">
-        <h2 style="text-align:center; color:#003366;">Message from the Principal</h2>
-    </div>
-
-    <table
-        style="width: 100%; border-collapse: collapse; background-color: white; border: 1px solid #ccc; border-radius: 10px;">
-        <tr>
-            <td style="width: 200px; padding: 15px; vertical-align: top;">
-                <img src="principal.jpg" alt="Principal"
-                    style="width: 100%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-            </td>
-
-            <td style="padding: 15px; vertical-align: top; line-height: 1.7; text-align: justify;">
-                <p id="message-preview">
-                    Dear Students and Parents, I feel honored to have this opportunity to communicate my
-                    plan as the
-                    Principal of MCD & DMHSS. Having served the education sector for more than three
-                    decades, I have
-                    come to learn that holistic education is imperative...
-                </p>
-
-                <div id="message-full" style="display: none;">
-                    <p>
-                        Our education system should ensure physical, psychological and intellectual
-                        development of individuals to ensure desired quality in education. Quality in
-                        education can be achieved only through proper planning and implementation of
-                        appropriate education philosophy, guided by modern management practices.
-                    </p>
-                    <p>
-                        Such practices help address the interests of all stakeholders – students, parents,
-                        faculties, and society at large – and ensure stronger teamwork. In this regard,
-                        MCD & DMHSS has introduced Counseling Services, Coordination Mechanism, Evaluation
-                        Mechanism, and Corporate Social Responsibility to support our academic mission.
-                    </p>
-                    <p>
-                        Our Counseling Services help students overcome academic and personal problems and
-                        plan their future accordingly. The Coordination Mechanism minimizes centralized
-                        administrative complexities by decentralizing authority to program coordinators.
-                        The Evaluation Mechanism enhances student and faculty performance by tracking
-                        progress and suggesting necessary corrective actions. CSR aims to meet societal
-                        expectations by awarding scholarships based on merit and need.
-                    </p>
-                    <p>
-                        I believe that the integration of our qualified and dedicated faculties, conducive
-                        environment, and modern management practices will yield the quality education you
-                        deserve. I invite you all to be part of our academic journey and take full
-                        advantage of the opportunities offered.
-                    </p>
-                    <p style="margin-top: 20px;">
-                        Best Regards,<br>
-                        — Principal, MCD & DMHSS
-                    </p>
-                </div>
-                <div style="margin-top: 15px; text-align: left;">
-                    <button id="toggleBtn" onclick="toggleMessage()"
-                        style="background-color: #003366; color: white; padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer;">Read
-                        More</button>
-                </div>
-            </td>
-        </tr>
-    </table>
-</div>
-
-<script>
-    function toggleMessage() {
-        var preview = document.getElementById("message-preview");
-        var full = document.getElementById("message-full");
-        var btn = document.getElementById("toggleBtn");
-
-        if (full.style.display === "none") {
-            full.style.display = "block";
-            preview.style.display = "none";
-            btn.textContent = "Read Less";
-        } else {
-            full.style.display = "none";
-            preview.style.display = "block";
-            btn.textContent = "Read More";
-        }
+<style>
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px 0;
     }
-</script>
+
+    .gallery img {
+        width: 80px;
+        height: auto;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease;
+    }
+
+    .gallery img:hover {
+        transform: scale(1.05);
+    }
+</style>
+
+<div class="section gallery" id="gallery">
+    <img src="assets/IMG_2325.JPG" alt="Gallery 1">
+    <img src="assets/IMG_2326.JPG" alt="Gallery 2">
+    <img src="assets/IMG_2334.JPG" alt="Gallery 3">
+    <img src="assets/IMG_2333.JPG" alt="Gallery 4">
+    <img src="assets/IMG_2341.JPG" alt="Gallery 5">
+    <img src="assets/IMG_2342.JPG" alt="Gallery 6">
+</div>
