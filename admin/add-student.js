@@ -1,3 +1,4 @@
+const baseUrl = "http://localhost:3000";
 
 document.getElementById('studentForm').addEventListener('submit', async function(e) {
   e.preventDefault(); // Prevent default form submission
