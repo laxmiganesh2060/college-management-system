@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -207,38 +208,360 @@
       const m = today.getMonth() - birthDate.getMonth();
       if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         age--;
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Student Signup</title>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: #f4f9ff;
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+>>>>>>> 13280c9457c4963229d7ff2c5b01e1c025a7f43c
       }
-      if (age < 16) {
-        document.getElementById('dobError').textContent = "Student must be at least 16 years old.";
-        document.getElementById('dobError').style.display = 'block';
-        valid = false;
+      .signup-form {
+        background: white;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        max-width: 450px;
+        width: 100%;
       }
-    }
+      .signup-form h2 {
+        margin-bottom: 25px;
+        color: #003366;
+        text-align: center;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: #003366;
+        font-weight: 600;
+      }
+      input, select {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+      }
+      input:focus, select:focus {
+        border-color: #003366;
+        outline: none;
+      }
+      .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+        display: none;
+      }
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #003366;
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #0059b3;
+      }
+      #imagePreview {
+        margin-top: 10px;
+        max-width: 100%;
+        border-radius: 6px;
+        display: none;
+      }
+      .form-group input[type="radio"] {
+        margin-right: 5px;
+      }
+       .back-link {
+            text-align: center;
+            margin-top: 15px;
+        }
 
-    const password = form.password.value;
-    if (password.length < 6) {
-      document.getElementById('passwordError').style.display = 'block';
-      valid = false;
-    }
+        .back-link a {
+            color: #002855;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-    const confirmPassword = form.confirmPassword.value;
-    if (password !== confirmPassword) {
-      document.getElementById('confirmPasswordError').style.display = 'block';
-      valid = false;
-    }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+  </head>
+  <body>
+    <form class="signup-form" id="studentForm" enctype="multipart/form-data" novalidate>
+      <h2>Student Signup</h2>
 
-    const image = imageInput.files[0];
-    if (!image) {
-      document.getElementById('imageError').style.display = 'block';
-      valid = false;
-    }
+      <div class="form-group">
+        <label for="studentName">Full Name *</label>
+        <input type="text" id="studentName" name="studentName" required />
+        <div class="error-message" id="studentNameError">Please enter your full name.</div>
+      </div>
 
-    if (!valid) {
-      event.preventDefault();
-    }
-  });
-</script>
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required />
+        <div class="error-message" id="emailError">Please enter a valid email.</div>
+      </div>
 
+      <!-- New Symbol No Field -->
+      <div class="form-group">
+        <label for="symbolNo">Student Symbol No *</label>
+        <input type="text" id="symbolNo" name="symbolNo" required />
+        <div class="error-message" id="symbolNoError">Please enter symbol no.</div>
+        <div class="error-message" id="symbolNoDuplicateError">Symbol no. already exists.</div>
+      </div>
 
-</body>
+      <div class="form-group">
+        <label for="level">Level *</label>
+        <select id="level" name="level" required>
+          <option value>Select Level</option>
+          <option value="bca">BCA</option>
+          <option value="bed">B.Ed</option>
+          <option value="bbs">BBS</option>
+          <option value="ba">BA</option>
+        </select>
+        <div class="error-message" id="levelError">Please select a level.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="yearSem">Year / Semester *</label>
+        <select id="yearSem" name="yearSem" required>
+          <option value>Please select Level first</option>
+        </select>
+        <div class="error-message" id="yearSemError">Please select a valid year/semester.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="roll">Roll no. *</label>
+        <input type="text" id="roll" name="roll" required />
+        <div class="error-message" id="rollError">Please enter roll no.</div>
+      </div>
+
+      <div class="form-group">
+        <label>Gender *</label>
+        <div style="display: flex; gap: 20px; align-items: center;">
+          <label>
+            <input type="radio" name="gender" value="male" required /> Male
+          </label>
+          <label>
+            <input type="radio" name="gender" value="female" required /> Female
+          </label>
+          <label>
+            <input type="radio" name="gender" value="other" required /> Other
+          </label>
+        </div>
+        <div class="error-message" id="genderError">Please select gender.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of Birth *</label>
+        <input type="date" id="dob" name="dob" required />
+        <div class="error-message" id="dobError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password *</label>
+        <input type="password" id="password" name="password" required />
+        <div class="error-message" id="passwordError">Password must be at least 6 characters.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password *</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required />
+        <div class="error-message" id="confirmPasswordError">Passwords do not match.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="studentImage">Upload Photo *</label>
+        <input type="file" id="studentImage" name="studentImage" accept="image/*" required />
+        <div class="error-message" id="imageError">Please upload a photo.</div>
+        <img id="imagePreview" alt="Preview Image" />
+      </div>
+
+      <button type="submit">Sign Up</button>
+       <div class="back-link">
+            <p><a href="adminpanel.html">← Back to Home</a></p>
+        </div>
+    </form>
+
+    <script>
+      const form = document.getElementById('studentForm');
+      const levelSelect = document.getElementById('level');
+      const yearSemSelect = document.getElementById('yearSem');
+      const imageInput = document.getElementById('studentImage');
+      const imagePreview = document.getElementById('imagePreview');
+
+      const semOptions = [
+        '1st Semester', '2nd Semester', '3rd Semester', '4th Semester',
+        '5th Semester', '6th Semester', '7th Semester', '8th Semester'
+      ];
+      const yearOptions = [
+        '1st Year', '2nd Year', '3rd Year', '4th Year'
+      ];
+
+      levelSelect.addEventListener('change', function () {
+        const level = levelSelect.value;
+        yearSemSelect.innerHTML = '<option value="">Select Year/Semester</option>';
+        const options = (level === 'bca') ? semOptions : yearOptions;
+        options.forEach(opt => {
+          const option = document.createElement('option');
+          option.value = opt.toLowerCase().replace(/\s/g, '');
+          option.textContent = opt;
+          yearSemSelect.appendChild(option);
+        });
+      });
+
+      imageInput.addEventListener('change', function () {
+        const file = this.files[0];
+        if (file) {
+          imagePreview.src = URL.createObjectURL(file);
+          imagePreview.style.display = 'block';
+        } else {
+          imagePreview.src = '';
+          imagePreview.style.display = 'none';
+        }
+      });
+
+      form.addEventListener('submit', function(event) {
+        const errors = form.querySelectorAll('.error-message');
+        errors.forEach(err => err.style.display = 'none');
+        let valid = true;
+
+        // Load stored students from localStorage (if any)
+        const storedStudents = JSON.parse(localStorage.getItem('students') || '[]');
+
+        if (form.studentName.value.trim() === '') {
+          document.getElementById('studentNameError').style.display = 'block';
+          valid = false;
+        }
+
+        const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+        if (!emailPattern.test(form.email.value.trim())) {
+          document.getElementById('emailError').style.display = 'block';
+          valid = false;
+        }
+
+        // Symbol No validation (required + unique)
+        const symbolNoValue = form.symbolNo.value.trim();
+        if (symbolNoValue === '') {
+          document.getElementById('symbolNoError').style.display = 'block';
+          valid = false;
+        } else {
+          // Check uniqueness
+          const duplicateSymbol = storedStudents.find(s => s.symbolNo === symbolNoValue);
+          if (duplicateSymbol) {
+            document.getElementById('symbolNoDuplicateError').style.display = 'block';
+            valid = false;
+          }
+        }
+
+        if (!form.level.value) {
+          document.getElementById('levelError').style.display = 'block';
+          valid = false;
+        }
+
+        if (!form.yearSem.value) {
+          document.getElementById('yearSemError').style.display = 'block';
+          valid = false;
+        }
+
+        if (form.roll.value.trim() === '') {
+          document.getElementById('rollError').style.display = 'block';
+          valid = false;
+        }
+
+        const genderRadios = form.querySelectorAll('input[name="gender"]');
+        let genderSelected = false;
+        genderRadios.forEach(radio => {
+          if (radio.checked) {
+            genderSelected = true;
+          }
+        });
+        if (!genderSelected) {
+          document.getElementById('genderError').style.display = 'block';
+          valid = false;
+        }
+
+        const dob = form.dob.value;
+        if (!dob) {
+          document.getElementById('dobError').textContent = "Please select your date of birth.";
+          document.getElementById('dobError').style.display = 'block';
+          valid = false;
+        } else {
+          const today = new Date();
+          const birthDate = new Date(dob);
+          let age = today.getFullYear() - birthDate.getFullYear();
+          const m = today.getMonth() - birthDate.getMonth();
+          if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+          if (age < 16) {
+            document.getElementById('dobError').textContent = "Student must be at least 16 years old.";
+            document.getElementById('dobError').style.display = 'block';
+            valid = false;
+          }
+        }
+
+        const password = form.password.value;
+        const confirmPassword = form.confirmPassword.value;
+        if (password.length < 6) {
+          document.getElementById('passwordError').style.display = 'block';
+          valid = false;
+        } else if (password !== confirmPassword) {
+          document.getElementById('confirmPasswordError').style.display = 'block';
+          valid = false;
+        }
+
+        if (!imageInput.files[0]) {
+          document.getElementById('imageError').style.display = 'block';
+          valid = false;
+        }
+
+        if (!valid) {
+          event.preventDefault();
+          return;
+        }
+
+        // If valid, save data to localStorage (example)
+        event.preventDefault();
+
+        // Prepare student data
+        const studentData = {
+          studentName: form.studentName.value.trim(),
+          email: form.email.value.trim(),
+          symbolNo: symbolNoValue,
+          level: form.level.value,
+          yearSem: form.yearSem.value,
+          roll: form.roll.value.trim(),
+          gender: [...genderRadios].find(r => r.checked).value,
+          dob: form.dob.value,
+          password: form.password.value,
+          // For simplicity, just save image name; handling image upload is more complex
+          imageName: imageInput.files[0].name
+        };
+
+        // Save student data to localStorage array
+        storedStudents.push(studentData);
+        localStorage.setItem('students', JSON.stringify(storedStudents));
+
+        alert('Student registered successfully!');
+        form.reset();
+        imagePreview.style.display = 'none';
+        yearSemSelect.innerHTML = '<option value>Please select Level first</option>';
+      });
+    </script>
+  </body>
 </html>
