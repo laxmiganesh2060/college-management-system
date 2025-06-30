@@ -80,8 +80,14 @@
     <h2>Student Signup</h2>
 
     <div class="form-group">
-      <label for="studentName">Full Name *</label>
-      <input type="text" id="studentName" name="studentName" required />
+      <label for="studentName">First Name *</label>
+      <input type="text" id="firstName" name="firstName" required />
+      <div class="error-message" id="studentNameError">Please enter your full name.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="studentName">Last Name *</label>
+      <input type="text" id="lastName" name="lastName" required />
       <div class="error-message" id="studentNameError">Please enter your full name.</div>
     </div>
 
@@ -92,10 +98,23 @@
     </div>
 
     <div class="form-group">
-      <label for="class">Level *</label>
-      <input type="text" id="class" name="class" required />
-      <div class="error-message" id="classError">Please enter your class.</div>
+      <label for="email">Contact Number *</label>
+      <input type="number" id="contactNumber" name="contactNumber" required />
+      <div class="error-message" id="contactError">Please enter a valid phone number.</div>
     </div>
+
+    <div class="form-group">
+      <label for="rollNumber">Batch Year *</label>
+      <input type="number" id="year" name="year" required />
+      <div class="error-message" id="contactError">Please enter a valid phone number.</div>
+    </div>
+
+     <div class="form-group">
+      <label for="email">Contact Number *</label>
+      <input type="number" id="contactNumber" name="contactNumber" required />
+      <div class="error-message" id="contactError">Please enter a valid phone number.</div>
+    </div>
+
 
     <div class="form-group">
       <label for="department">Department *</label>
@@ -110,9 +129,9 @@
     </div>
 
     <div class="form-group">
-      <label for="dob">Date of Birth *</label>
-      <input type="date" id="dob" name="dob" required />
-      <div class="error-message" id="dobError">Please select your date of birth.</div>
+      <label for="semester">Semester *</label>
+      <input type="number" id="semester" name="semester" required />
+      <div class="error-message" id="contactError">Please enter a valid phone number.</div>
     </div>
 
     <div class="form-group">
@@ -122,14 +141,8 @@
     </div>
 
     <div class="form-group">
-      <label for="confirmPassword">Confirm Password *</label>
-      <input type="password" id="confirmPassword" name="confirmPassword" required />
-      <div class="error-message" id="confirmPasswordError">Passwords do not match.</div>
-    </div>
-
-    <div class="form-group">
-      <label for="studentImage">Upload Photo *</label>
-      <input type="file" id="studentImage" name="studentImage" accept="image/*" required />
+      <label for="image">Upload Photo *</label>
+      <input type="file" id="image" name="image" accept="image/*" required />
       <div class="error-message" id="imageError">Please upload a photo.</div>
       <img id="imagePreview" alt="Preview Image" />
     </div>
