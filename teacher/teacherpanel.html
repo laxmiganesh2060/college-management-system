@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Student Dashboard</title>
+  <title>Teacher Dashboard</title>
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -13,7 +13,6 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
   />
   <style>
-    /* Your existing styles (no changes) */
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f9ff;
@@ -21,6 +20,7 @@
       padding: 0;
     }
 
+    /* Navbar scrolls with page */
     .navbar {
       width: 100%;
       background-color: #0d6efd;
@@ -43,8 +43,7 @@
       background-color: #343a40;
       color: white;
       position: static;
-      /* keep height: 100vh as is */
-      height: 100vh;
+      min-height: 100vh; /* keep min height to viewport */
       padding-top: 20px;
       overflow-y: auto;
       transition: width 0.3s ease;
@@ -74,6 +73,7 @@
       background-color: #495057;
     }
 
+    /* Main content area */
     .main {
       margin: 0;
       padding: 20px;
@@ -85,6 +85,7 @@
       margin-left: 0;
     }
 
+    /* Profile Dropdown Styles */
     .profile-dropdown {
       position: relative;
       display: flex;
@@ -130,6 +131,7 @@
       font-weight: bold;
     }
 
+    /* Profile Card & Original Styles */
     .profile-card {
       max-width: 500px;
       margin: 40px auto;
@@ -193,7 +195,7 @@
       <button class="btn btn-light" id="toggleSidebar">
         <i class="bi bi-list"></i>
       </button>
-      <h4 class="d-inline-block ms-2">🎓 Student Dashboard</h4>
+      <h4 class="d-inline-block ms-2">👨‍🏫 Teacher Dashboard</h4>
     </div>
     <div class="profile-dropdown" id="profileDropdown">
       <span class="student-name">Bishika Chaudhary</span>
@@ -201,7 +203,7 @@
       <div class="dropdown-menu">
         <a href="#">Change Password</a>
         <a href="../index.html">Logout</a>
-        <a href="#">View Profile</a>
+        <a href="#" onclick="showSection('profileSection')">View Profile</a>
       </div>
     </div>
   </div>
@@ -209,9 +211,9 @@
   <div class="sidebar" id="sidebar">
     <h5>MAIN NAVIGATION</h5>
     <a href="#" onclick="showSection('dashboardContent')"> 🏠 Dashboard</a>
-    <a href="#" onclick="showSection('attendanceSection')"> 📝 Attendance</a>
+    <a href="#" onclick="showSection('attendanceSection')"> 📝 Take Attendance</a>
     <a href="#" onclick="showSection('scheduleSection')"> 📅 Class Schedule</a>
-    <a href="#" onclick="showSection('profileSection')">👤 My Profile</a>
+    <a href="#" onclick="showSection('profileSection')"> 👤 My Profile</a>
   </div>
 
   <div class="main" id="main">
@@ -219,6 +221,7 @@
       <h2>Dashboard</h2>
       <p>Welcome to your student dashboard. Here is an overview of your activities.</p>
     </div>
+
     <div id="attendanceSection" style="display:none;">
       <div class="profile-card">
         <h2>Attendance</h2>
@@ -229,6 +232,7 @@
         </ul>
       </div>
     </div>
+
     <div id="scheduleSection" style="display:none;">
       <div class="profile-card">
         <h2>Class Schedule</h2>
@@ -239,6 +243,18 @@
         </ul>
       </div>
     </div>
+
+    <div id="editprofile" style="display:none;">
+      <div class="profile-card">
+        <h2>Class Schedule</h2>
+        <ul>
+          <li>Monday - Math (9:00 AM)</li>
+          <li>Tuesday - Science (10:00 AM)</li>
+          <li>Wednesday - English (11:00 AM)</li>
+        </ul>
+      </div>
+    </div>
+
     <div id="profileSection" style="display: none;">
       <div class="profile-card">
         <div class="profile-image">
@@ -250,7 +266,7 @@
           <p><strong>Level:</strong> Bachelors</p>
           <p><strong>Date of Birth:</strong> 2003-05-10</p>
           <p><strong>Email:</strong> bishika@example.com</p>
-          <button class="edit-btn">Edit Profile</button>
+          <button class="edit-btn" onclick="showSection('editprofile')">Edit Profile</button>
         </div>
       </div>
     </div>
@@ -262,26 +278,30 @@
     document.getElementById('toggleSidebar').addEventListener('click', () => {
       sidebar.classList.toggle('collapsed');
       main.classList.toggle('collapsed');
-      syncSidebarHeight();
     });
     const profile = document.getElementById('profileDropdown');
     profile.addEventListener('click', () => profile.classList.toggle('open'));
     function showSection(sectionId) {
-      ['dashboardContent','attendanceSection','scheduleSection','profileSection'].forEach(id => {
+      ['dashboardContent','attendanceSection','scheduleSection','profileSection','editprofile'].forEach(id => {
         document.getElementById(id).style.display = 'none';
       });
       document.getElementById(sectionId).style.display = 'block';
+
+      // Sync sidebar height when content changes
       syncSidebarHeight();
     }
 
-    // Sync sidebar height with main content and viewport
     function syncSidebarHeight() {
+      const sidebar = document.getElementById('sidebar');
+      const main = document.getElementById('main');
       const mainHeight = main.scrollHeight;
       const viewportHeight = window.innerHeight;
-      sidebar.style.height = Math.max(mainHeight, viewportHeight) + 'px';
+      sidebar.style.minHeight = Math.max(mainHeight, viewportHeight) + 'px';
     }
 
+    // Run on page load
     window.addEventListener('load', syncSidebarHeight);
+    // Run on window resize
     window.addEventListener('resize', syncSidebarHeight);
   </script>
 
