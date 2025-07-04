@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Update Teacher Info</title>
+        <link rel="stylesheet" href="updateteacher.css">
+
+    </head>
+    <body>
+
+        <div class="form-container">
+            <h2>Update Teacher Info</h2>
+            <form>
+                <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" id="firstName" name="firstName" required
+                        value placeholder="Enter First Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" id="lastName" name="lastName" required
+                        value placeholder="Enter Last Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="contactNumber">Contact Number *</label>
+                    <input type="tel" id="contactNumber" name="contactNumber"
+                        required value placeholder="Enter Contact Number">
+                </div>
+
+                <div class="form-group">
+                    <label for="qualification">Qualification *</label>
+                    <textarea id="qualification" name="qualification" rows="3"
+                        required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Subjects *</label>
+                    <select id="subject" name="subjects" required>
+                        <option value>Select Subject</option>
+                        <option value="accounting">Accounting</option>
+                        <option value="physics">Physics</option>
+                        <option value="english">English</option>
+                        <option value="mathematics">Mathematics</option>
+                        <option value="economics">Economics</option>
+                        <option value="computer">Computer Science</option>
+                    </select>
+                </div>
+                <div></div>
+                <button type="submit" class="submit-btn">Submit</button>
+                <div></div>
+                <div class="back-link">
+                    <p><a href="adminpanel.html">← Back to Home</a></p>
+                </div>
+            </form>
+        </div>
+
+    </body>
+</html>
