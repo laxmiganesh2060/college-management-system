@@ -29,6 +29,11 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
         console.log('Success:', result);
 
+    if(result['status'] === 'error') {
+      alert(result['message'] ?? "Cannot login");
+      return;
+    }
+
 
     document.cookie = `accessToken=${result["accessToken"]}`;
     document.cookie = `refreshToken=${result['refreshToken']}`;
@@ -55,6 +60,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     }
   } catch (error) {
     console.error('Error:', error);
+    alert(result);
   }
 
 });
