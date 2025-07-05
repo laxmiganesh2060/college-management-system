@@ -34,37 +34,40 @@
   <div class="container-wrapper">
     <div class="sidebar" id="sidebar">
       <h5>MAIN NAVIGATION</h5>
-      <a href="#" onclick="showSection('adminDashboard')">🏠 Dashboard</a>
+      
+      <a href="#" onclick="showSection('adminDashboard')">
+        <i class="bi bi-speedometer2"></i> Dashboard
+      </a>
 
       <a href="#" onclick="toggleSubmenu('studentSubmenu')">
-        <i class="bi bi-gear"></i> Manage Students ⮟
+        <i class="bi bi-people-fill"></i> Manage Students ⮟
       </a>
       <div id="studentSubmenu" class="submenu" style="display: none;">
         <a href="add-student.html">➕ Add Student</a>
-        <a href="update-student.html">✏️ Update Student</a>
+        <a href="updatestudent.html">✏️ Update Student</a>
         <a href="#">🗑️ View and Delete Student</a>
       </div>
 
       <a href="#" onclick="toggleSubmenu('teacherSubmenu')">
-        <i class="bi bi-gear"></i> Manage Teachers ⮟
+        <i class="bi bi-person-badge-fill"></i> Manage Teachers ⮟
       </a>
       <div id="teacherSubmenu" class="submenu" style="display:none;">
         <a href="add-teacher.html">➕ Add Teacher</a>
-        <a href="update-teacher.html">✏️ Update Teacher</a>
+        <a href="updateteacher.html">✏️ Update Teacher</a>
         <a href="#">🗑️ Delete Teacher</a>
       </div>
 
       <a href="#" onclick="toggleSubmenu('noticeSubmenu')">
-        <i class="bi bi-bell"></i> Manage Notices ⮟
+        <i class="bi bi-bell-fill"></i> Manage Notices ⮟
       </a>
       <div id="noticeSubmenu" class="submenu" style="display:none;">
-        <a href="#">➕ Add Notice</a>
-        <a href="#">✏️ Update Notice</a>
+        <a href="add-notice.html">➕ Add Notice</a>
+        <a href="updatenotice.html">✏️ Update Notice</a>
         <a href="#">🗑️ Delete Notice</a>
       </div>
 
       <a href="#" onclick="toggleSubmenu('scheduleSubmenu')">
-        <i class="bi bi-calendar-event"></i> Class Schedule ⮟
+        <i class="bi bi-calendar-event-fill"></i> Class Schedule ⮟
       </a>
       <div id="scheduleSubmenu" class="submenu" style="display:none;">
         <a href="class-sechdule.html">➕ Add Schedule</a>
@@ -72,7 +75,9 @@
         <a href="#">🗑️ Delete Schedule</a>
       </div>
 
-      <a href="#" onclick="showSection('adminProfile')">👤 My Profile</a>
+      <a href="#" onclick="showSection('adminProfile')">
+        <i class="bi bi-person-circle"></i> My Profile
+      </a>
     </div>
 
     <div class="main" id="main">

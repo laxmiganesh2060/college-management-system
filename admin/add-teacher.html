@@ -96,13 +96,19 @@
 
     <div class="form-group">
       <label for="teacherId">Teacher ID *</label>
-      <input type="text" id="teacherId" name="teacherId" required />
+      <input type="text" id="teacherId" name="employeeId" required />
       <div class="error-message" id="teacherIdError">Please enter your Teacher ID.</div>
     </div>
 
     <div class="form-group">
-      <label for="fullName">Full Name *</label>
-      <input type="text" id="fullName" name="fullName" required />
+      <label for="firstName">first Name *</label>
+      <input type="text" id="firstName" name="firstName" required />
+      <div class="error-message" id="fullNameError">Please enter your full name.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name *</label>
+      <input type="text" id="lastName" name="lastName" required />
       <div class="error-message" id="fullNameError">Please enter your full name.</div>
     </div>
 
@@ -114,7 +120,7 @@
 
     <div class="form-group">
       <label for="phone">Phone Number *</label>
-      <input type="tel" id="phone" name="phone" required />
+      <input type="tel" id="phone" name="contactNumber" required />
       <div class="error-message" id="phoneError">Please enter a valid phone number.</div>
     </div>
 
@@ -131,20 +137,35 @@
     </div>
 
     <div class="form-group">
+  <label for="qualification">Qualification *</label>
+  <input type="text" id="qualification" name="qualification" required />
+  <div class="error-message" id="qualificationError">Please enter your qualification.</div>
+</div>
+
+<div class="form-group">
+  <label for="subject">Subject *</label>
+  <select id="subject" name="subjects" required>
+    <option value="">Select Subject</option>
+    <option value="accounting">Accounting</option>
+    <option value="physics">Physics</option>
+    <option value="english">English</option>
+    <option value="mathematics">Mathematics</option>
+    <option value="economics">Economics</option>
+    <option value="computer">Computer Science</option>
+  </select>
+  <div class="error-message" id="subjectError">Please select a subject.</div>
+</div>
+  
+    <div class="form-group">
       <label for="password">Password *</label>
       <input type="password" id="password" name="password" required />
       <div class="error-message" id="passwordError">Please enter a password (at least 6 characters).</div>
     </div>
 
-    <div class="form-group">
-      <label for="confirmPassword">Confirm Password *</label>
-      <input type="password" id="confirmPassword" name="confirmPassword" required />
-      <div class="error-message" id="confirmPasswordError">Passwords do not match.</div>
-    </div>
-
+   
     <div class="form-group">
       <label for="teacherImage">Upload Photo *</label>
-      <input type="file" id="teacherImage" name="teacherImage" accept="image/*" required />
+      <input type="file" id="teacherImage" name="image" accept="image/*" required />
       <div class="error-message" id="imageError">Please upload an image.</div>
       <img id="imagePreview" src="#" alt="Preview" />
     </div>
@@ -154,82 +175,6 @@
             <p><a href="adminpanel.html">← Back to Home</a></p>
         </div>
   </form>
-
-  <script>
-    const form = document.getElementById('teacherForm');
-    const imageInput = document.getElementById('teacherImage');
-    const imagePreview = document.getElementById('imagePreview');
-
-    imageInput.addEventListener('change', function () {
-      const file = this.files[0];
-      if (file) {
-        imagePreview.style.display = 'block';
-        imagePreview.src = URL.createObjectURL(file);
-      } else {
-        imagePreview.style.display = 'none';
-        imagePreview.src = "";
-      }
-    });
-
-    form.addEventListener('submit', function(event) {
-      const errors = form.querySelectorAll('.error-message');
-      errors.forEach(error => error.style.display = 'none');
-      let valid = true;
-
-      const teacherId = form.teacherId.value.trim();
-      if (teacherId === '') {
-        document.getElementById('teacherIdError').style.display = 'block';
-        valid = false;
-      }
-
-      const fullName = form.fullName.value.trim();
-      if (fullName === '') {
-        document.getElementById('fullNameError').style.display = 'block';
-        valid = false;
-      }
-
-      const email = form.email.value.trim();
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email)) {
-        document.getElementById('emailError').style.display = 'block';
-        valid = false;
-      }
-
-      const phone = form.phone.value.trim();
-      const phonePattern = /^[0-9]{7,15}$/;
-      if (!phonePattern.test(phone)) {
-        document.getElementById('phoneError').style.display = 'block';
-        valid = false;
-      }
-
-      const department = form.department.value;
-      if (department === '') {
-        document.getElementById('departmentError').style.display = 'block';
-        valid = false;
-      }
-
-      const password = form.password.value;
-      if (password.length < 6) {
-        document.getElementById('passwordError').style.display = 'block';
-        valid = false;
-      }
-
-      const confirmPassword = form.confirmPassword.value;
-      if (password !== confirmPassword) {
-        document.getElementById('confirmPasswordError').style.display = 'block';
-        valid = false;
-      }
-
-      const image = imageInput.files[0];
-      if (!image) {
-        document.getElementById('imageError').style.display = 'block';
-        valid = false;
-      }
-
-      if (!valid) {
-        event.preventDefault();
-      }
-    });
-  </script>
+  <script src="add-teacher.js"></script>
 </body>
 </html>

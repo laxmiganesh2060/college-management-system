@@ -75,16 +75,29 @@
         border-radius: 6px;
         display: none;
       }
+          .back-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .back-link a {
+      color: #002855;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
     </style>
-    
+
   </head>
   <body>
     <form
       class="signup-form"
       id="studentForm"
       enctype="multipart/form-data"
-      novalidate
-    >
+      novalidate>
       <h2>Student Signup</h2>
 
       <div class="form-group">
@@ -138,7 +151,7 @@
       <div class="form-group">
         <label for="department">Department *</label>
         <select id="department" name="department" required>
-          <option value="">Select Department</option>
+          <option value>Select Department</option>
           <option value="management">Management</option>
           <option value="science">Science</option>
           <option value="humanities">Humanities</option>
@@ -174,6 +187,10 @@
 
       <button type="submit">Sign Up</button>
     </form>
+    <div></div>
+    <div class="back-link">
+      <p><a href="adminpanel.html">← Back to Home</a></p>
+    </div>
 
     <script src="add-student.js"></script>
     <!-- <script>
@@ -399,6 +416,6 @@
             yearSemSelect.innerHTML = '<option value>Please select Level first</option>';
           });
     </script> -->
-  
+
   </body>
 </html>
