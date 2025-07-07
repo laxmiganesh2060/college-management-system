@@ -27,7 +27,12 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
     const result = (await response.json())['data'];
 
-        console.log('Success:', result);
+    console.log('Success:', result);
+
+    if(result['status'] === 'error') {
+      alert(result['message'] ?? "Cannot login");
+      return;
+    }
 
 
     document.cookie = `accessToken=${result["accessToken"]}`;
@@ -55,6 +60,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     }
   } catch (error) {
     console.error('Error:', error);
+    alert(result);
   }
 
 });
