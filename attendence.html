@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Student Attendance Dashboard</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 220px;
+            background: #1e3a8a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            margin: 15px 0;
+            display: block;
+            padding: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: #3b82f6;
+        }
+
+        .sidebar a.active {
+            background: #2563eb;
+            font-weight: bold;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topbar {
+            background: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .topbar input[type="text"] {
+            padding: 8px 12px;
+            width: 50%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .profile-area {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+        }
+
+        .profile-area img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid #2563eb;
+        }
+
+        .profile-area span {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .profile-dropdown {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            width: 220px;
+            display: none;
+            flex-direction: column;
+            padding: 15px;
+            z-index: 1000;
+        }
+
+        .profile-dropdown.active {
+            display: flex;
+        }
+
+        .profile-dropdown .profile-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .profile-dropdown .profile-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid #2563eb;
+        }
+
+        .profile-dropdown .profile-info div {
+            font-weight: 600;
+            color: #222;
+        }
+
+        .profile-dropdown button {
+            background: #ef4444;
+            border: none;
+            padding: 12px 20px;
+            color: white;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .profile-dropdown button:hover {
+            background: #b91c1c;
+        }
+
+        .content {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .student-card {
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .student-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .student-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .student-card input[type="checkbox"] {
+            transform: scale(1.3);
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            margin: 20px 0 0;
+            padding: 15px;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #059669;
+        }
+
+        .placeholder {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+            text-align: center;
+            color: #555;
+        }
+
+        @media(max-width: 768px) {
+            .sidebar {
+                width: 60px;
+                padding: 10px;
+            }
+
+            .sidebar h2 {
+                display: none;
+            }
+
+            .sidebar a {
+                font-size: 0;
+                height: 40px;
+                width: 40px;
+                padding: 0;
+                text-align: center;
+            }
+
+            .sidebar a::before {
+                content: '•';
+                font-size: 24px;
+                display: block;
+            }
+
+            .topbar input[type="text"] {
+                width: 70%;
+            }
+
+            .profile-area span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <a class="menu-item active" data-view="today">Today</a>
+        <a class="menu-item" data-view="attendance">Attendance</a>
+        <a class="menu-item" data-view="analytical">Analytical</a>
+        <a class="menu-item" data-view="setting">Setting</a>
+    </div>
+
+    <div class="main">
+        <div class="topbar">
+            <input type="text" placeholder="Search students..." id="searchInput" style="display:none;">
+            <div class="profile-area" id="profileArea">
+                <img src="https://i.pravatar.cc/40?u=laxmi.ganesh" alt="Profile Picture" />
+                <span>Laxmi Ganesh</span>
+            </div>
+            <div class="profile-dropdown" id="profileDropdown">
+                <div class="profile-info">
+                    <img src="https://i.pravatar.cc/100?u=laxmi.ganesh" alt="Profile Picture" />
+                    <div>Laxmi Ganesh</div>
+                </div>
+                <button onclick="window.location.href='signup.html'">Logout</button>
+            </div>
+        </div>
+
+        <div class="content" id="contentArea">
+            <div class="placeholder" id="todayView">Welcome to the Today dashboard view.</div>
+
+            <div id="attendanceView" style="display:none;">
+                <div id="studentList"></div>
+                <button class="submit-btn" onclick="submitAttendance()">Submit Attendance</button>
+            </div>
+
+            <div class="placeholder" id="analyticalView" style="display:none;">
+                Analytical dashboard content coming soon!
+            </div>
+
+            <div class="placeholder" id="settingView"
+                style="display:none; display: flex; justify-content: center; align-items: center;">
+                <button onclick="window.location.href='signup.html'">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuItems = document.querySelectorAll('.sidebar .menu-item');
+        const todayView = document.getElementById('todayView');
+        const attendanceView = document.getElementById('attendanceView');
+        const analyticalView = document.getElementById('analyticalView');
+        const settingView = document.getElementById('settingView');
+        const searchInput = document.getElementById('searchInput');
+
+        const profileArea = document.getElementById('profileArea');
+        const profileDropdown = document.getElementById('profileDropdown');
+
+        let todayAttendanceData = [];
+
+        function hideAllViews() {
+            todayView.style.display = 'none';
+            attendanceView.style.display = 'none';
+            analyticalView.style.display = 'none';
+            settingView.style.display = 'none';
+        }
+
+        function clearActive() {
+            menuItems.forEach(item => item.classList.remove('active'));
+        }
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                clearActive();
+                item.classList.add('active');
+                hideAllViews();
+                profileDropdown.classList.remove('active');
+
+                const view = item.getAttribute('data-view');
+                if (view === 'today') {
+                    todayView.style.display = 'block';
+                    searchInput.style.display = 'none';
+                    updateTodayView();
+                } else if (view === 'attendance') {
+                    attendanceView.style.display = 'block';
+                    searchInput.style.display = 'block';
+                    searchInput.value = '';
+                    filterStudents('');
+                } else if (view === 'analytical') {
+                    analyticalView.style.display = 'block';
+                    searchInput.style.display = 'none';
+                } else if (view === 'setting') {
+                    settingView.style.display = 'flex';
+                    searchInput.style.display = 'none';
+                }
+            });
+        });
+
+        const students = [...Array(60).keys()].map(i => {
+            const names = ["Laxmi Dahal", "Suman Rai", "Anita Shrestha", "Ramesh Gurung", "Pooja Thapa"];
+            return {
+                name: names[i % names.length] + ' ' + (i + 1),
+                img: `https://i.pravatar.cc/100?u=${encodeURIComponent('student' + i)}`
+            };
+        });
+
+        const studentListDiv = document.getElementById('studentList');
+
+        function createStudentCard(student) {
+            const card = document.createElement('div');
+            card.className = 'student-card';
+
+            const infoDiv = document.createElement('div');
+            infoDiv.className = 'student-info';
+
+            const img = document.createElement('img');
+            img.src = student.img;
+            img.alt = student.name;
+
+            const nameSpan = document.createElement('span');
+            nameSpan.textContent = student.name;
+
+            infoDiv.appendChild(img);
+            infoDiv.appendChild(nameSpan);
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+
+            checkbox.addEventListener('change', () => {
+                card.style.background = checkbox.checked ? '#d1fae5' : 'white';
+            });
+
+            card.appendChild(infoDiv);
+            card.appendChild(checkbox);
+
+            return card;
+        }
+
+        function renderStudents(list) {
+            studentListDiv.innerHTML = '';
+            list.forEach(student => {
+                studentListDiv.appendChild(createStudentCard(student));
+            });
+        }
+
+        renderStudents(students);
+
+        searchInput.addEventListener('input', () => {
+            filterStudents(searchInput.value.toLowerCase());
+        });
+
+        function filterStudents(text) {
+            const filtered = students.filter(s => s.name.toLowerCase().includes(text));
+            renderStudents(filtered);
+        }
+
+        function submitAttendance() {
+            todayAttendanceData = [];
+            document.querySelectorAll('#attendanceView .student-card').forEach(card => {
+                const name = card.querySelector('span').textContent;
+                const present = card.querySelector('input').checked;
+                todayAttendanceData.push({ name, present });
+            });
+            alert("Attendance submitted!");
+        }
+
+        function updateTodayView() {
+            if (todayAttendanceData.length === 0) {
+                todayView.innerHTML = 'Welcome to the Today dashboard view. No attendance taken yet.';
+            } else {
+                let html = '<h3>Today\'s Attendance</h3><ul style="text-align:left;">';
+                todayAttendanceData.forEach(item => {
+                    html += `<li>${item.name}: <strong style="color:${item.present ? 'green' : 'red'}">${item.present ? 'Present' : 'Absent'}</strong></li>`;
+                });
+                html += '</ul>';
+                todayView.innerHTML = html;
+            }
+        }
+
+        profileArea.addEventListener('click', () => {
+            profileDropdown.classList.toggle('active');
+        });
+        document.addEventListener('click', (e) => {
+            if (!profileArea.contains(e.target) && !profileDropdown.contains(e.target)) {
+                profileDropdown.classList.remove('active');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

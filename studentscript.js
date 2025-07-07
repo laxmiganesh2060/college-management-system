@@ -25,12 +25,21 @@ document.getElementById('loginForm').addEventListener('submit', async function (
       credentials: 'include'     
     });
 
-    const result = await response.json();
+    const result = (await response.json())['data'];
 
-    console.log('Success:', result);
+        console.log('Success:', result);
 
 
-    switch (result.data.user.role) {
+    document.cookie = `accessToken=${result["accessToken"]}`;
+    document.cookie = `refreshToken=${result['refreshToken']}`;
+    document.cookie = `email=${result['user']["email"]}`;
+    document.cookie = `profile=${result['user']["image"]}`;
+    document.cookie = `firstName=${result['user']["firstName"]}`;
+    document.cookie = `lastName=${result['user']["lastName"]}`;
+
+
+
+    switch (result.user.role) {
       case 'ADMIN':
         window.location.href = '/admin/adminpanel.html';
         break;
