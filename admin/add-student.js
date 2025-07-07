@@ -1,14 +1,15 @@
-const baseUrl = "http://localhost:3000";
+const baseUrl = "http://127.0.0.1:3000";
 
 document.getElementById('studentForm').addEventListener('submit', async function(e) {
-  e.preventDefault(); // Prevent default form submission
+  e.preventDefault();
   
   const formData = new FormData(this);
   
   try {
     const response = await fetch(`${baseUrl}/api/admin/students`, {
       method: 'POST',
-      body: formData
+      body: formData,
+      credentials: 'include',
     });
     
     const result = await response.json();
