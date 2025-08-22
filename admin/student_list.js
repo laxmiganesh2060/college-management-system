@@ -1,6 +1,8 @@
-// students.js
+// localhost
+// const serverUrl = "http://localhost:3000";
 
-const serverUrl = 'http://127.0.0.1:3000/';
+// hosting
+const serverUrl = "https://cms-backend-w9vz.onrender.com";
 
 // Configuration
 const API_CONFIG = {

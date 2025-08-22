@@ -1,4 +1,8 @@
-const baseUrl = "http://127.0.0.1:3000";
+// localhost
+// const baseUrl = "http://localhost:3000";
+
+// hosting
+const baseUrl = "https://cms-backend-w9vz.onrender.com";
 
 function getCookieValue(cookieName) {
     const res = document.cookie.split(";").filter((value, ind, arr) => {

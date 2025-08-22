@@ -1,7 +1,9 @@
+// localhost
+// const serverUrl = "http://localhost:3000";
 
-// teachers.js
+// hosting
+const serverUrl = "https://cms-backend-w9vz.onrender.com";
 
-const serverUrl = 'http://127.0.0.1:3000/';
 
 // Configuration
 const API_CONFIG = {

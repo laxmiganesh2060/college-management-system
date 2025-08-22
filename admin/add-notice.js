@@ -1,4 +1,8 @@
-const baseUrl = "http://localhost:3000";
+// localhost
+// const baseUrl = "http://localhost:3000";
+
+// hosting
+const baseUrl = "https://cms-backend-w9vz.onrender.com";
 
 const loader = document.getElementById('loaderOverlay');
 const snackbar = document.getElementById('snackbar');
