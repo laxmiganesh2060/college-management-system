@@ -6,7 +6,7 @@ const serverUrl = 'http://127.0.0.1:3000/';
 const API_CONFIG = {
     baseUrl: 'http://127.0.0.1:3000/api/admin', // Change this to your actual API URL
     endpoints: {
-        students: '/students',
+        students: '/students', //teachers
         deleteStudent: '/students', // Will append /{id} for DELETE
         updateStudent: '/students'  // Will append /{id} for PUT
     }

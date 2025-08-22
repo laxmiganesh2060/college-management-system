@@ -75,29 +75,87 @@
         border-radius: 6px;
         display: none;
       }
-          .back-link {
-      text-align: center;
-      margin-top: 15px;
-    }
+      .back-link {
+        text-align: center;
+        margin-top: 15px;
+      }
 
-    .back-link a {
-      color: #002855;
-      text-decoration: none;
-      font-weight: bold;
-    }
+      .back-link a {
+        color: #002855;
+        text-decoration: none;
+        font-weight: bold;
+      }
 
-    .back-link a:hover {
-      text-decoration: underline;
-    }
+      .back-link a:hover {
+        text-decoration: underline;
+      }
+
+      /* Loader overlay */
+      #loaderOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+      .loader {
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid #111;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Snackbar */
+      #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 8px;
+        padding: 16px;
+        position: fixed;
+        left: 50%;
+        bottom: 30px;
+        z-index: 1001;
+        transition: opacity 0.3s, bottom 0.3s;
+      }
+      #snackbar.show {
+        visibility: visible;
+        opacity: 1;
+        bottom: 50px;
+      }
+      #snackbar.success {
+        background: #2e7d32;
+      }
+      #snackbar.error {
+        background: #c62828;
+      }
     </style>
-
   </head>
   <body>
     <form
       class="signup-form"
       id="studentForm"
       enctype="multipart/form-data"
-      novalidate>
+      novalidate
+    >
       <h2>Student Signup</h2>
 
       <div class="form-group">
@@ -186,237 +244,16 @@
       </div>
 
       <button type="submit">Sign Up</button>
-       <div class="back-link">
-      <p><a href="adminpanel.html">← Back to Home</a></p>
-    </div>
+      <div class="back-link">
+        <p><a href="adminpanel.html">← Back to Home</a></p>
+      </div>
+
+      <div id="loaderOverlay">
+        <div class="loader"></div>
+      </div>
+      <div id="snackbar"></div>
     </form>
-    <div></div>
-   
 
     <script src="add-student.js"></script>
-    <!-- <script>
-      const form = document.getElementById('studentForm');
-      const imageInput = document.getElementById('studentImage');
-      const imagePreview = document.getElementById('imagePreview');
-
-      imageInput.addEventListener('change', function () {
-        const file = this.files[0];
-        if (file) {
-          imagePreview.src = URL.createObjectURL(file);
-          imagePreview.style.display = 'block';
-        } else {
-          imagePreview.src = '';
-          imagePreview.style.display = 'none';
-        }
-      });
-
-      form.addEventListener('submit', function(event) {
-        const errors = form.querySelectorAll('.error-message');
-        errors.forEach(err => err.style.display = 'none');
-        let valid = true;
-
-        const name = form.studentName.value.trim();
-        if (name === '') {
-          document.getElementById('studentNameError').style.display = 'block';
-          valid = false;
-        }
-
-        const email = form.email.value.trim();
-        const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-        if (!emailPattern.test(email)) {
-          document.getElementById('emailError').style.display = 'block';
-          valid = false;
-        }
-
-        const classValue = form.class.value.trim();
-        if (classValue === '') {
-          document.getElementById('classError').style.display = 'block';
-          valid = false;
-        }
-
-        const department = form.department.value;
-        if (department === '') {
-          document.getElementById('departmentError').style.display = 'block';
-          valid = false;
-        }
-
-        const dob = form.dob.value;
-        if (!dob) {
-          document.getElementById('dobError').textContent = "Please select your date of birth.";
-          document.getElementById('dobError').style.display = 'block';
-          valid = false;
-        } else {
-          const today = new Date();
-          const birthDate = new Date(dob);
-          let age = today.getFullYear() - birthDate.getFullYear();
-          const m = today.getMonth() - birthDate.getMonth();
-          if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-          }
-        }
-                const form = document.getElementById('studentForm');
-          const levelSelect = document.getElementById('level');
-          const yearSemSelect = document.getElementById('yearSem');
-          const imageInput = document.getElementById('studentImage');
-          const imagePreview = document.getElementById('imagePreview');
-
-          const semOptions = [
-            '1st Semester', '2nd Semester', '3rd Semester', '4th Semester',
-            '5th Semester', '6th Semester', '7th Semester', '8th Semester'
-          ];
-          const yearOptions = [
-            '1st Year', '2nd Year', '3rd Year', '4th Year'
-          ];
-
-          levelSelect.addEventListener('change', function () {
-            const level = levelSelect.value;
-            yearSemSelect.innerHTML = '<option value="">Select Year/Semester</option>';
-            const options = (level === 'bca') ? semOptions : yearOptions;
-            options.forEach(opt => {
-              const option = document.createElement('option');
-              option.value = opt.toLowerCase().replace(/\s/g, '');
-              option.textContent = opt;
-              yearSemSelect.appendChild(option);
-            });
-          });
-
-          imageInput.addEventListener('change', function () {
-            const file = this.files[0];
-            if (file) {
-              imagePreview.src = URL.createObjectURL(file);
-              imagePreview.style.display = 'block';
-            } else {
-              imagePreview.src = '';
-              imagePreview.style.display = 'none';
-            }
-          });
-
-          form.addEventListener('submit', function(event) {
-            const errors = form.querySelectorAll('.error-message');
-            errors.forEach(err => err.style.display = 'none');
-            let valid = true;
-
-            // Load stored students from localStorage (if any)
-            const storedStudents = JSON.parse(localStorage.getItem('students') || '[]');
-
-            if (form.studentName.value.trim() === '') {
-              document.getElementById('studentNameError').style.display = 'block';
-              valid = false;
-            }
-
-            const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-            if (!emailPattern.test(form.email.value.trim())) {
-              document.getElementById('emailError').style.display = 'block';
-              valid = false;
-            }
-
-            // Symbol No validation (required + unique)
-            const symbolNoValue = form.symbolNo.value.trim();
-            if (symbolNoValue === '') {
-              document.getElementById('symbolNoError').style.display = 'block';
-              valid = false;
-            } else {
-              // Check uniqueness
-              const duplicateSymbol = storedStudents.find(s => s.symbolNo === symbolNoValue);
-              if (duplicateSymbol) {
-                document.getElementById('symbolNoDuplicateError').style.display = 'block';
-                valid = false;
-              }
-            }
-
-            if (!form.level.value) {
-              document.getElementById('levelError').style.display = 'block';
-              valid = false;
-            }
-
-            if (!form.yearSem.value) {
-              document.getElementById('yearSemError').style.display = 'block';
-              valid = false;
-            }
-
-            if (form.roll.value.trim() === '') {
-              document.getElementById('rollError').style.display = 'block';
-              valid = false;
-            }
-
-            const genderRadios = form.querySelectorAll('input[name="gender"]');
-            let genderSelected = false;
-            genderRadios.forEach(radio => {
-              if (radio.checked) {
-                genderSelected = true;
-              }
-            });
-            if (!genderSelected) {
-              document.getElementById('genderError').style.display = 'block';
-              valid = false;
-            }
-
-            const dob = form.dob.value;
-            if (!dob) {
-              document.getElementById('dobError').textContent = "Please select your date of birth.";
-              document.getElementById('dobError').style.display = 'block';
-              valid = false;
-            } else {
-              const today = new Date();
-              const birthDate = new Date(dob);
-              let age = today.getFullYear() - birthDate.getFullYear();
-              const m = today.getMonth() - birthDate.getMonth();
-              if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
-              if (age < 16) {
-                document.getElementById('dobError').textContent = "Student must be at least 16 years old.";
-                document.getElementById('dobError').style.display = 'block';
-                valid = false;
-              }
-            }
-
-            const password = form.password.value;
-            const confirmPassword = form.confirmPassword.value;
-            if (password.length < 6) {
-              document.getElementById('passwordError').style.display = 'block';
-              valid = false;
-            } else if (password !== confirmPassword) {
-              document.getElementById('confirmPasswordError').style.display = 'block';
-              valid = false;
-            }
-
-            if (!imageInput.files[0]) {
-              document.getElementById('imageError').style.display = 'block';
-              valid = false;
-            }
-
-            if (!valid) {
-              event.preventDefault();
-              return;
-            }
-
-            // If valid, save data to localStorage (example)
-            event.preventDefault();
-
-            // Prepare student data
-            const studentData = {
-              studentName: form.studentName.value.trim(),
-              email: form.email.value.trim(),
-              symbolNo: symbolNoValue,
-              level: form.level.value,
-              yearSem: form.yearSem.value,
-              roll: form.roll.value.trim(),
-              gender: [...genderRadios].find(r => r.checked).value,
-              dob: form.dob.value,
-              password: form.password.value,
-              // For simplicity, just save image name; handling image upload is more complex
-              imageName: imageInput.files[0].name
-            };
-
-            // Save student data to localStorage array
-            storedStudents.push(studentData);
-            localStorage.setItem('students', JSON.stringify(storedStudents));
-
-            alert('Student registered successfully!');
-            form.reset();
-            imagePreview.style.display = 'none';
-            yearSemSelect.innerHTML = '<option value>Please select Level first</option>';
-          });
-    </script> -->
-
   </body>
 </html>

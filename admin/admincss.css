@@ -13,7 +13,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: static; /* no fixed */
+
+  position: fixed; /* no fixed */
 }
 
 .navbar h4 {
@@ -75,18 +76,24 @@ body {
 
 /* Sidebar */
 .sidebar {
-  width: 250px;
-  background-color: #343a40;
+   background-color: #343a40;
   color: white;
   padding-top: 20px;
   transition: all 0.3s ease;
-  position: static; /* normal flow */
-  height: auto; /* natural height */
+  margin-top: 58px;
+  
+  height: auto; 
   overflow: visible;
+  position: static; 
 
-  /* New lines to sync height */
-  min-height: 100vh;
   align-self: stretch;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px; /* adjust according to your sidebar width */
+  height: 100vh; /* full viewport height */
+  overflow-y: auto; /* if sidebar items overflow */
 }
 
 .sidebar.collapsed {
@@ -133,11 +140,17 @@ body {
 
 /* Main content area */
 .main {
-  flex: 1; /* fill remaining horizontal space */
+   flex: 1; 
   padding: 20px;
   transition: margin-left 0.3s ease;
   height: auto;
   overflow: visible;
+
+  margin-left: 220px; /* same as sidebar width */
+  height: 100vh; /* full height */
+  overflow-y: auto; /* only main content scrolls */
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .main.collapsed {

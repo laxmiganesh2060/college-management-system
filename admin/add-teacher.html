@@ -1,180 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Teacher Signup</title>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #f4f9ff;
-      padding: 40px;
-      display: flex;
-      justify-content: center;
-    }
-    .signup-form {
-      background: white;
-      padding: 30px 40px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      max-width: 400px;
-      width: 100%;
-    }
-    .signup-form h2 {
-      margin-bottom: 25px;
-      color: #003366;
-      text-align: center;
-    }
-    .form-group {
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin-bottom: 8px;
-      color: #003366;
-      font-weight: 600;
-    }
-    input, select {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-      transition: border-color 0.3s;
-    }
-    input:focus, select:focus {
-      border-color: #003366;
-      outline: none;
-    }
-    .error-message {
-      color: red;
-      font-size: 14px;
-      margin-top: 5px;
-      display: none;
-    }
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #003366;
-      color: white;
-      font-size: 18px;
-      font-weight: 600;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    button:hover {
-      background-color: #0059b3;
-    }
-    #imagePreview {
-      margin-top: 10px;
-      max-width: 100%;
-      height: auto;
-      display: none;
-      border-radius: 8px;
-    }
-           .back-link {
-            text-align: center;
-            margin-top: 15px;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Teacher Signup</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #f4f9ff;
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+      }
+      .signup-form {
+        background: white;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+      }
+      .signup-form h2 {
+        margin-bottom: 25px;
+        color: #003366;
+        text-align: center;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: #003366;
+        font-weight: 600;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+      }
+      input:focus,
+      select:focus {
+        border-color: #003366;
+        outline: none;
+      }
+      .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+        display: none;
+      }
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #003366;
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #0059b3;
+      }
+      #imagePreview {
+        margin-top: 10px;
+        max-width: 100%;
+        height: auto;
+        display: none;
+        border-radius: 8px;
+      }
+      .back-link {
+        text-align: center;
+        margin-top: 15px;
+      }
+
+      .back-link a {
+        color: #002855;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .back-link a:hover {
+        text-decoration: underline;
+      }
+
+      /* Loader overlay */
+      #loaderOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+      .loader {
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid #111;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
         }
-
-        .back-link a {
-            color: #002855;
-            text-decoration: none;
-            font-weight: bold;
+        100% {
+          transform: rotate(360deg);
         }
+      }
 
-        .back-link a:hover {
-            text-decoration: underline;
-        }
-  </style>
-</head>
-<body>
-  <form class="signup-form" id="teacherForm" enctype="multipart/form-data" novalidate>
-    <h2>Teacher Signup</h2>
+      /* Snackbar */
+      #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 8px;
+        padding: 16px;
+        position: fixed;
+        left: 50%;
+        bottom: 30px;
+        z-index: 1001;
+        transition: opacity 0.3s, bottom 0.3s;
+      }
+      #snackbar.show {
+        visibility: visible;
+        opacity: 1;
+        bottom: 50px;
+      }
+      #snackbar.success {
+        background: #2e7d32;
+      }
+      #snackbar.error {
+        background: #c62828;
+      }
+    </style>
+  </head>
+  <body>
+    <form
+      class="signup-form"
+      id="teacherForm"
+      enctype="multipart/form-data"
+      novalidate
+    >
+      <h2>Teacher Signup</h2>
 
-    <div class="form-group">
-      <label for="teacherId">Teacher ID *</label>
-      <input type="text" id="teacherId" name="employeeId" required />
-      <div class="error-message" id="teacherIdError">Please enter your Teacher ID.</div>
-    </div>
-
-    <div class="form-group">
-      <label for="firstName">first Name *</label>
-      <input type="text" id="firstName" name="firstName" required />
-      <div class="error-message" id="fullNameError">Please enter your full name.</div>
-    </div>
-
-    <div class="form-group">
-      <label for="lastName">Last Name *</label>
-      <input type="text" id="lastName" name="lastName" required />
-      <div class="error-message" id="fullNameError">Please enter your full name.</div>
-    </div>
-
-    <div class="form-group">
-      <label for="email">Email *</label>
-      <input type="email" id="email" name="email" required />
-      <div class="error-message" id="emailError">Please enter a valid email.</div>
-    </div>
-
-    <div class="form-group">
-      <label for="phone">Phone Number *</label>
-      <input type="tel" id="phone" name="contactNumber" required />
-      <div class="error-message" id="phoneError">Please enter a valid phone number.</div>
-    </div>
-
-    <div class="form-group">
-      <label for="department">Department *</label>
-      <select id="department" name="department" required>
-        <option value="">Select Department</option>
-        <option value="management">Management</option>
-        <option value="science">Science</option>
-        <option value="humanities">Humanities</option>
-        <option value="education">Education</option>
-      </select>
-      <div class="error-message" id="departmentError">Please select a department.</div>
-    </div>
-
-    <div class="form-group">
-  <label for="qualification">Qualification *</label>
-  <input type="text" id="qualification" name="qualification" required />
-  <div class="error-message" id="qualificationError">Please enter your qualification.</div>
-</div>
-
-<div class="form-group">
-  <label for="subject">Subject *</label>
-  <select id="subject" name="subjects" required>
-    <option value="">Select Subject</option>
-    <option value="accounting">Accounting</option>
-    <option value="physics">Physics</option>
-    <option value="english">English</option>
-    <option value="mathematics">Mathematics</option>
-    <option value="economics">Economics</option>
-    <option value="computer">Computer Science</option>
-  </select>
-  <div class="error-message" id="subjectError">Please select a subject.</div>
-</div>
-  
-    <div class="form-group">
-      <label for="password">Password *</label>
-      <input type="password" id="password" name="password" required />
-      <div class="error-message" id="passwordError">Please enter a password (at least 6 characters).</div>
-    </div>
-
-   
-    <div class="form-group">
-      <label for="teacherImage">Upload Photo *</label>
-      <input type="file" id="teacherImage" name="image" accept="image/*" required />
-      <div class="error-message" id="imageError">Please upload an image.</div>
-      <img id="imagePreview" src="#" alt="Preview" />
-    </div>
-
-    <button type="submit">Sign Up</button>
-     <div class="back-link">
-            <p><a href="adminpanel.html">← Back to Home</a></p>
+      <div class="form-group">
+        <label for="teacherId">Teacher ID *</label>
+        <input type="text" id="teacherId" name="teacherId" required />
+        <div class="error-message" id="teacherIdError">
+          Please enter your Teacher ID.
         </div>
-  </form>
-  <script src="add-teacher.js"></script>
-</body>
+      </div>
+
+      <div class="form-group">
+        <label for="firstName">first Name *</label>
+        <input type="text" id="firstName" name="firstName" required />
+        <div class="error-message" id="fullNameError">
+          Please enter your full name.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name *</label>
+        <input type="text" id="lastName" name="lastName" required />
+        <div class="error-message" id="fullNameError">
+          Please enter your full name.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required />
+        <div class="error-message" id="emailError">
+          Please enter a valid email.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" name="contactNumber" required />
+        <div class="error-message" id="phoneError">
+          Please enter a valid phone number.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="department">Department *</label>
+        <select id="department" name="department" required>
+          <option value="">Select Department</option>
+          <option value="management">Management</option>
+          <option value="science">Science</option>
+          <option value="humanities">Humanities</option>
+          <option value="education">Education</option>
+        </select>
+        <div class="error-message" id="departmentError">
+          Please select a department.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="qualification">Qualification *</label>
+        <input type="text" id="qualification" name="qualification" required />
+        <div class="error-message" id="qualificationError">
+          Please enter your qualification.
+        </div>
+      </div>
+
+       <div class="form-group">
+        <label for="designation">Designation *</label>
+        <input type="text" id="designation" name="designation" required />
+        <div class="error-message" id="designationError">
+          Please enter your designation.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subject *</label>
+        <select id="subject" name="subjects" required>
+          <option value="">Select Subject</option>
+          <option value="accounting">Accounting</option>
+          <option value="physics">Physics</option>
+          <option value="english">English</option>
+          <option value="mathematics">Mathematics</option>
+          <option value="economics">Economics</option>
+          <option value="computer">Computer Science</option>
+        </select>
+        <div class="error-message" id="subjectError">
+          Please select a subject.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password *</label>
+        <input type="password" id="password" name="password" required />
+        <div class="error-message" id="passwordError">
+          Please enter a password (at least 6 characters).
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="teacherImage">Upload Photo *</label>
+        <input
+          type="file"
+          id="teacherImage"
+          name="image"
+          accept="image/*"
+          required
+        />
+        <div class="error-message" id="imageError">Please upload an image.</div>
+        <img id="imagePreview" src="#" alt="Preview" />
+      </div>
+
+      <button type="submit">Sign Up</button>
+      <div class="back-link">
+        <p><a href="adminpanel.html">← Back to Home</a></p>
+      </div>
+      <div id="loaderOverlay">
+        <div class="loader"></div>
+      </div>
+      <div id="snackbar"></div>
+    </form>
+    <script src="add-teacher.js"></script>
+  </body>
 </html>

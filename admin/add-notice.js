@@ -1,4 +1,4 @@
-const baseUrl = "http://127.0.0.1:3000";
+const baseUrl = "http://localhost:3000";
 
 const loader = document.getElementById('loaderOverlay');
 const snackbar = document.getElementById('snackbar');
@@ -20,14 +20,14 @@ function showSnackbar(message, type = 'success') {
   }, 3000);
 }
 
-document.getElementById('studentForm').addEventListener('submit', async function(e) {
+document.getElementById('noticeForm').addEventListener('submit', async function(e) {
   e.preventDefault();
 
   const formData = new FormData(this);
 
   try {
     showLoader();
-    const response = await fetch(`${baseUrl}/api/admin/students`, {
+    const response = await fetch(`${baseUrl}/api/admin/notices`, {
       method: 'POST',
       body: formData,
       credentials: 'include',
@@ -37,10 +37,10 @@ document.getElementById('studentForm').addEventListener('submit', async function
     hideLoader();
 
     if (response.ok) {
-      showSnackbar('Student created successfully!', 'success');
+      showSnackbar('Notice created successfully!', 'success');
       this.reset();
     } else {
-      showSnackbar(result.message || 'Failed to create student', 'error');
+      showSnackbar(result.message || 'Failed to create notice', 'error');
     }
   } catch (error) {
     hideLoader();
