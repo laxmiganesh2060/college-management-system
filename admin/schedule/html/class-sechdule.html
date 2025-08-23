@@ -4,81 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Class Schedule Entry</title>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f0f4ff;
-      padding: 40px;
-    }
-    .form-container {
-      background-color: #fff;
-      max-width: 600px;
-      margin: auto;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-      color: #003366;
-      margin-bottom: 25px;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: 600;
-      color: #003366;
-    }
-    input, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-    .time-range {
-      display: flex;
-      gap: 10px;
-    }
-    .time-range input {
-      flex: 1;
-    }
-    .error-message {
-      color: red;
-      font-size: 14px;
-      margin-top: 5px;
-      display: none;
-    }
-    button {
-      margin-top: 25px;
-      width: 100%;
-      padding: 12px;
-      background-color: #003366;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0059b3;
-    }
-    .back-link {
-            text-align: center;
-            margin-top: 15px;
-        }
-
-        .back-link a {
-            color: #002855;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .back-link a:hover {
-            text-decoration: underline;
-        }
-  </style>
+  <link rel="stylesheet" href="../css/class-sechdule.css">
 </head>
 <body>
 
@@ -138,105 +64,11 @@
       <!-- Submit -->
       <button type="submit">Save Schedule</button>
       <div class="back-link">
-            <p><a href="../../adminpanel.html">← Back to Home</a></p>
-        </div>
+        <p><a href="../../adminpanel.html">← Back to Home</a></p>
+      </div>
     </form>
   </div>
 
-  <script>
-    const departmentSelect = document.getElementById('department');
-    const yearSemSelect = document.getElementById('yearSem');
-    const form = document.getElementById('scheduleForm');
-
-    const semesters = [
-      "1st Semester", "2nd Semester", "3rd Semester", "4th Semester",
-      "5th Semester", "6th Semester", "7th Semester", "8th Semester"
-    ];
-    const years = [
-      "1st Year", "2nd Year", "3rd Year", "4th Year"
-    ];
-
-    departmentSelect.addEventListener('change', function () {
-      const selected = departmentSelect.value;
-      yearSemSelect.innerHTML = '<option value="">Select Year or Semester</option>';
-      const options = selected === "BCA" ? semesters : years;
-
-      options.forEach(item => {
-        const opt = document.createElement('option');
-        opt.value = item;
-        opt.textContent = item;
-        yearSemSelect.appendChild(opt);
-      });
-    });
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      // Clear all previous errors
-      const errors = form.querySelectorAll('.error-message');
-      errors.forEach(err => err.style.display = 'none');
-
-      let valid = true;
-
-      // Validate teacher name
-      if (!form.teacher.value.trim()) {
-        document.getElementById('teacherError').style.display = 'block';
-        valid = false;
-      }
-
-      // Validate day
-      if (!form.day.value) {
-        document.getElementById('dayError').style.display = 'block';
-        valid = false;
-      }
-
-      // Validate times
-      const startTime = form.startTime.value;
-      const endTime = form.endTime.value;
-      if (!startTime || !endTime || startTime >= endTime) {
-        document.getElementById('timeError').style.display = 'block';
-        valid = false;
-      }
-
-      // Validate department
-      if (!departmentSelect.value) {
-        document.getElementById('departmentError').style.display = 'block';
-        valid = false;
-      }
-
-      // Validate year/semester
-      if (!yearSemSelect.value) {
-        document.getElementById('yearSemError').style.display = 'block';
-        valid = false;
-      }
-
-      // Validate subject
-      if (!form.subject.value.trim()) {
-        document.getElementById('subjectError').style.display = 'block';
-        valid = false;
-      }
-
-      if (!valid) return;
-
-      // Save to localStorage
-      const schedule = {
-        teacher: form.teacher.value.trim(),
-        day: form.day.value,
-        time: `${startTime} - ${endTime}`,
-        department: departmentSelect.value,
-        yearSem: yearSemSelect.value,
-        subject: form.subject.value.trim()
-      };
-
-      let schedules = JSON.parse(localStorage.getItem('classSchedules') || '[]');
-      schedules.push(schedule);
-      localStorage.setItem('classSchedules', JSON.stringify(schedules));
-
-      alert("Class schedule saved successfully!");
-      form.reset();
-      yearSemSelect.innerHTML = '<option value="">Select Year or Semester</option>';
-    });
-  </script>
-
+  <script src="../javascript/script.js"></script>
 </body>
 </html>
